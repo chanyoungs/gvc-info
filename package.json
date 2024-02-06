@@ -1,7 +1,7 @@
 {
-  "homepage": "https://chanyoungs.github.io/gvc-climbing",
-  "title": "GVC Climbing Club",
-  "name": "gvc-climbing",
+  "homepage": "https://chanyoungs.github.io/gvc-info",
+  "title": "GVC Info",
+  "name": "gvc-info",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
