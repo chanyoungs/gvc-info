@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 
-import Background from './assets/background.png';
 import Logo from './assets/gods_vision_church_logo.svg';
 import { contents } from './contents';
 import { CustomLink } from './CustomLink';
@@ -60,8 +59,6 @@ export const App = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${Background})`,
-        // backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
@@ -75,7 +72,7 @@ export const App = () => {
           </ImageListItem>
         </ImageList>
         <Typography sx={titleSx} variant="h6" align="center">
-          꿈이있는교회 클라이밍 클럽
+          God's Vision Church Information
         </Typography>
         <Grid container justifyContent="center" spacing={1}>
           {contents.map((content) => (
