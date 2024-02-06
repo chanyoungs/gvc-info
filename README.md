@@ -1,1 +1,1 @@
-# bit.ly/gvcclimb
+[https://chanyoungs.github.io/gvc-info](https://chanyoungs.github.io/gvc-info)
