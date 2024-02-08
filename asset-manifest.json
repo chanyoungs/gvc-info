@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/gvc-info/static/js/main.6dcc1167.js",
+    "main.js": "/gvc-info/static/js/main.4cc83a4c.js",
     "static/media/gods_vision_church_logo.svg": "/gvc-info/static/media/gods_vision_church_logo.f7f2b4d6a8c2c7bc523d928df18645ee.svg",
     "index.html": "/gvc-info/index.html",
-    "main.6dcc1167.js.map": "/gvc-info/static/js/main.6dcc1167.js.map"
+    "main.4cc83a4c.js.map": "/gvc-info/static/js/main.4cc83a4c.js.map"
   },
   "entrypoints": [
-    "static/js/main.6dcc1167.js"
+    "static/js/main.4cc83a4c.js"
   ]
 }
