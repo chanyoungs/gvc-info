@@ -14,8 +14,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "5.0.4",
     "@mui/material": "latest",
-    "axios": "^1.6.7",
-    "csvtojson": "^2.0.10",
+    "papaparse": "^5.4.1",
     "react": "latest",
     "react-dom": "latest",
     "react-ga": "3.3.0"

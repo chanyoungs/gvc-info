@@ -1,3 +1,4 @@
+import { Box, Card, CardActionArea, CardContent, Divider, List, ListItem, ListItemText, Stack, Switch } from '@mui/material';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -9,8 +10,8 @@ import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 
 import Logo from './assets/gods_vision_church_logo.svg';
-import { contents } from './contents';
 import { CustomLink } from './CustomLink';
+import { fetchData } from './data';
 
 const containerSx = {
   height: "90vh",
@@ -50,10 +51,19 @@ const buttonSx = (selected) => ({
   background: !selected && "white",
 });
 
+
 export const App = () => {
-  const [contentIndex, setContent] = useState(undefined);
+  const [chosenCategoryKey, setChosenCategoryKey] = useState(undefined);
+  const [language, setLanguage] = useState("kor");
+  const [data, setData] = useState({});
+
+  const onLanguageChange = (event) => {
+    setLanguage(event.target.checked ? "eng" : "kor");
+  };
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname);
+    fetchData(setData);
   }, []);
 
   return (
@@ -72,57 +82,66 @@ export const App = () => {
           </ImageListItem>
         </ImageList>
         <Typography sx={titleSx} variant="h6" align="center">
-          God's Vision Church Information
+          {language === "kor" ? "꿈이있는교회 정보" : "God's Vision Church Information"}
         </Typography>
         <Grid container justifyContent="center" spacing={1}>
-          {contents.map((content) => (
-            <Grid item xs={4} key={content.title}>
-              <Button
-                fullWidth
-                variant={
-                  contentIndex === content.index ? "contained" : "outlined"
-                }
-                sx={buttonSx(contentIndex === content.index)}
-                onClick={() => {
-                  ReactGA.event({
-                    category: "Menu",
-                    action: content.title,
-                  });
-                  setContent(content.index);
-                }}
-              >
-                {content.title}
-              </Button>
-            </Grid>
-          ))}
+          {Object.keys(data).map((categoryKey) => {
+            const category = data[categoryKey][language]
+            return (
+              <Grid item xs={4} key={categoryKey}>
+                <Button
+                  fullWidth
+                  variant={
+                    chosenCategoryKey === categoryKey
+                      ? "contained"
+                      : "outlined"
+                  }
+                  sx={buttonSx(chosenCategoryKey === categoryKey)}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Menu",
+                      action: category.name,
+                    });
+                    setChosenCategoryKey(categoryKey);
+                  }}
+                >
+                  {category.name}
+                </Button>
+              </Grid>
+            )
+          })}
         </Grid>
         <div style={paperContainerSx}>
-          {contentIndex !== undefined && (
-            <Paper sx={paperSx}>{contents[contentIndex].content}</Paper>
-          )}
+          {chosenCategoryKey && (<Box sx={paperSx}>{data[chosenCategoryKey][language].contents.map(content => (
+            <Card key={content.item_name} sx={{ margin: 1, padding: 1 }}>
+              <Typography gutterBottom variant="body1" component="div" align='center'>
+                {content.item_name}
+              </Typography>
+              <Typography variant="body2" align='center'>
+                {content.item_content}
+              </Typography>
+              {(content.contact_name && <Typography variant="body2" align="center" color="text.secondary">
+                {`Contact: ${content.contact_name}, Kakao: ${content.contact_kakao}`}
+              </Typography>)
+              }
+            </Card>
+          ))}</Box>)}
+
         </div>
         <div sx={contactSx}>
-          <Typography variant="body2" align="center">
-            질문이나 참여 관심 있으시면 언제든 연락주세요!
-          </Typography>
-          <Typography variant="body2" align="center">
-            클럽장: 송찬영
-          </Typography>
-          <Typography variant="body2" align="center">
-            Kakao ID: chanyoungs
-          </Typography>
-          <Typography variant="body2" align="center">
-            Email:{" "}
-            <CustomLink
-              href="chanyoungs@gmail.com"
-              color="secondary"
-              title="Email"
-            >
-              chanyoungs@gmail.com
-            </CustomLink>
-          </Typography>
+          <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Grid item>
+              <Typography>한글</Typography>
+            </Grid>
+            <Grid item>
+              <Switch color="default" onChange={onLanguageChange} />
+            </Grid>
+            <Grid item>
+              <Typography>ENG</Typography>
+            </Grid>
+          </Grid>
         </div>
-      </Container>
-    </div>
+      </Container >
+    </div >
   );
 };
