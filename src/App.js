@@ -80,8 +80,8 @@ export const App = () => {
         </ImageList>
         <Typography sx={titleSx} variant="h6" align="center">
           {language === "kor"
-            ? "꿈이있는교회 정보"
-            : "God's Vision Church Information"}
+            ? "꿈이있는교회"
+            : "God's Vision Church"}
         </Typography>
         <Grid container justifyContent="center" spacing={1}>
           {Object.keys(data).map((categoryKey) => {
