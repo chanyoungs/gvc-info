@@ -1,16 +1,14 @@
-import { Box, Card, CardActionArea, CardContent, Divider, List, ListItem, ListItemText, Stack, Switch } from '@mui/material';
+import { Box, Card, Switch } from '@mui/material';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 
 import Logo from './assets/gods_vision_church_logo.svg';
-import { CustomLink } from './CustomLink';
 import { fetchData } from './data';
 
 const containerSx = {
@@ -51,7 +49,6 @@ const buttonSx = (selected) => ({
   background: !selected && "white",
 });
 
-
 export const App = () => {
   const [chosenCategoryKey, setChosenCategoryKey] = useState(undefined);
   const [language, setLanguage] = useState("kor");
@@ -82,11 +79,13 @@ export const App = () => {
           </ImageListItem>
         </ImageList>
         <Typography sx={titleSx} variant="h6" align="center">
-          {language === "kor" ? "꿈이있는교회 정보" : "God's Vision Church Information"}
+          {language === "kor"
+            ? "꿈이있는교회 정보"
+            : "God's Vision Church Information"}
         </Typography>
         <Grid container justifyContent="center" spacing={1}>
           {Object.keys(data).map((categoryKey) => {
-            const category = data[categoryKey][language]
+            const category = data[categoryKey][language];
             return (
               <Grid item xs={4} key={categoryKey}>
                 <Button
@@ -96,7 +95,9 @@ export const App = () => {
                       ? "contained"
                       : "outlined"
                   }
-                  sx={buttonSx(chosenCategoryKey === categoryKey)}
+                  sx={buttonSx(
+                    chosenCategoryKey === categoryKey
+                  )}
                   onClick={() => {
                     ReactGA.event({
                       category: "Menu",
@@ -108,40 +109,69 @@ export const App = () => {
                   {category.name}
                 </Button>
               </Grid>
-            )
+            );
           })}
         </Grid>
         <div style={paperContainerSx}>
-          {chosenCategoryKey && (<Box sx={paperSx}>{data[chosenCategoryKey][language].contents.map(content => (
-            <Card key={content.item_name} sx={{ margin: 1, padding: 1 }}>
-              <Typography gutterBottom variant="body1" component="div" align='center'>
-                {content.item_name}
-              </Typography>
-              <Typography variant="body2" align='center'>
-                {content.item_content}
-              </Typography>
-              {(content.contact_name && <Typography variant="body2" align="center" color="text.secondary">
-                {`Contact: ${content.contact_name}, Kakao: ${content.contact_kakao}`}
-              </Typography>)
-              }
-            </Card>
-          ))}</Box>)}
-
+          {chosenCategoryKey && (
+            <Box sx={paperSx}>
+              {data[chosenCategoryKey][language].contents.map(
+                (content) => (
+                  <Card
+                    key={content.item_name}
+                    sx={{ margin: 1, padding: 1 }}
+                  >
+                    <Typography
+                      gutterBottom
+                      variant="body1"
+                      component="div"
+                      align="center"
+                    >
+                      {content.item_name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      align="center"
+                    >
+                      {content.item_content}
+                    </Typography>
+                    {content.contact_name && (
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        color="text.secondary"
+                      >
+                        {`Contact: ${content.contact_name}, Kakao: ${content.contact_kakao}`}
+                      </Typography>
+                    )}
+                  </Card>
+                )
+              )}
+            </Box>
+          )}
         </div>
         <div sx={contactSx}>
-          <Grid container direction="row" justifyContent="center" alignItems="center">
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Grid item>
               <Typography>한글</Typography>
             </Grid>
             <Grid item>
-              <Switch color="default" onChange={onLanguageChange} />
+              <Switch
+                color="default"
+                onChange={onLanguageChange}
+              />
             </Grid>
             <Grid item>
               <Typography>ENG</Typography>
             </Grid>
           </Grid>
         </div>
-      </Container >
-    </div >
+      </Container>
+    </div>
   );
 };
