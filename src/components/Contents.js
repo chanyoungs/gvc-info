@@ -15,7 +15,7 @@ const paperSx = {
 
 export const Contents = ({chosenCategoryKey, data, language}) => (
     <div style={paperContainerSx}>
-        {chosenCategoryKey && (
+        {data && (
             <Box sx={paperSx}>
                 {data[chosenCategoryKey][language].contents.map(
                     (content) => (
@@ -36,13 +36,6 @@ export const Contents = ({chosenCategoryKey, data, language}) => (
                                 {content.item_content}
                             </Typography>
                             {content.contact_name && (
-                                // <Typography
-                                //     variant="body2"
-                                //     align="center"
-                                //     color="text.secondary"
-                                // >
-                                //     {`${language === "kor" ? "문의" : "Contact"}: ${content.contact_name}, ${language === "kor" ? "카카오" : "Kakao"}: ${content.contact_kakao}`}
-                                // </Typography>
                                 <>
                                     <Typography
                                         variant="body2"
