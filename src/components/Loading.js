@@ -1,16 +1,24 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import React from "react"
+import React from "react";
 
-export const Loading = ({language}) => (
+export const Loading = ({ language }) => (
     <Box
-        sx={{
-            display: "flex",
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-        }}
+        position="fixed"
+        top="0"
+        left="0"
+        height="100vh"
+        width="100vw"
+        zIndex={1}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
     >
-        <Box alignItems="center" display="flex" flexDirection="column">
+        <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+        >
             <CircularProgress />
             <Typography margin={2}>
                 {language === "kor" ? "로딩중..." : "Loading data..."}
