@@ -1,26 +1,5 @@
 import Papa from "papaparse";
 
-// const getCsvs = async (decoder) =>
-//     Promise.all(
-//         [
-//             [
-//                 "data",
-//                 "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7giEwAym5W8D-FX9I13fJo3xDS7QkGWAzi1c9WT8hkPx1R5qbr-3PicaW7kxegFywMytm1NOmqBdZ/pub?gid=1740377975&single=true&output=csv",
-//             ],
-//             [
-//                 "categoryNames",
-//                 "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7giEwAym5W8D-FX9I13fJo3xDS7QkGWAzi1c9WT8hkPx1R5qbr-3PicaW7kxegFywMytm1NOmqBdZ/pub?gid=352505193&single=true&output=csv",
-//             ],
-//         ].map(async (key, url) => {
-//             const response = await fetch(url);
-//             const csvEncoded = await response.body.getReader().read();
-//             const csvDecoded = decoder.decode(csvEncoded.value); // the csv text
-//             const rows = Papa.parse(csvDecoded, { header: true }).data; // array of objects
-//             console.log({response, csvEncoded, csvDecoded, rows})
-//             return { key, data: rows };
-//         })
-//     );
-
 export const fetchData = async (setCategories) => {
     const csvs = {};
     const decoder = new TextDecoder("utf-8");

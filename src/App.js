@@ -22,29 +22,29 @@ export const App = () => {
     }, []);
 
     return (
-            <Container maxWidth="sm">
-                <Box
-                    top={0}
-                    position="sticky"
-                    bgcolor={theme.palette.background.default}
-                    padding={1}
-                >
-                    <Logo {...{ language }} />
-                    <LanguageSwitch {...{ language, setLanguage }} />
-                    {data ? (
-                        <Menu
-                            {...{
-                                data,
-                                language,
-                                chosenCategoryKey,
-                                setChosenCategoryKey,
-                            }}
-                        />
-                    ) : (
-                        <Loading {...{ language }} />
-                    )}
-                </Box>
-                <Contents {...{ chosenCategoryKey, data, language }} />
-            </Container>
+        <Container maxWidth="sm">
+            <Box
+                top={0}
+                position="sticky"
+                bgcolor={theme.palette.background.default}
+                padding={1}
+            >
+                <Logo {...{ language }} />
+                <LanguageSwitch {...{ language, setLanguage }} />
+                {data ? (
+                    <Menu
+                        {...{
+                            data,
+                            language,
+                            chosenCategoryKey,
+                            setChosenCategoryKey,
+                        }}
+                    />
+                ) : (
+                    <Loading {...{ language }} />
+                )}
+            </Box>
+            <Contents {...{ chosenCategoryKey, data, language }} />
+        </Container>
     );
 };

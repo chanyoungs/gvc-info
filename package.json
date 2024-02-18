@@ -1,48 +1,48 @@
 {
-  "homepage": "https://chanyoungs.github.io/gvc-info",
-  "title": "GVC Info",
-  "name": "gvc-info",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "react-scripts": "latest"
-  },
-  "description": "God's Vision Church Information",
-  "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@mui/icons-material": "5.0.4",
-    "@mui/material": "latest",
-    "papaparse": "^5.4.1",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-ga": "3.3.0"
-  },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "keywords": []
+    "homepage": "https://chanyoungs.github.io/gvc-info",
+    "title": "GVC Info",
+    "name": "gvc-info",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "gh-pages": "^3.2.3",
+        "react-scripts": "5.0.1"
+    },
+    "description": "God's Vision Church Information",
+    "dependencies": {
+        "@emotion/react": "latest",
+        "@emotion/styled": "latest",
+        "@mui/material": "latest",
+        "papaparse": "^5.4.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-ga": "^3.3.1",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "keywords": []
 }
