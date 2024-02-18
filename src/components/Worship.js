@@ -1,13 +1,42 @@
 import React from "react";
-import { Box } from "@mui/material";
-export const Worship = () => (
-    <Box height="80vh">
-        <iframe
-            title="worship"
-            src="https://drive.google.com/file/d/1Oar45C6crixraBfxuKnNbDRC4nknbzvX/preview"
-            width="100%"
-            height="100%"
-            allow="autoplay"
+import { useState } from "react";
+import { pdfjs, Document, Page } from "react-pdf";
+import { SizeMe } from "react-sizeme";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    "pdfjs-dist/build/pdf.worker.min.js",
+    import.meta.url
+).toString();
+
+export const Worship = () => {
+    const [numPages, setNumPages] = useState();
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        setNumPages(numPages);
+    };
+    return (
+        <SizeMe
+            monitorHeight
+            refreshRate={128}
+            refreshMode={"debounce"}
+            render={({ size }) => (
+                <Document
+                    file="https://raw.githubusercontent.com/chanyoungs/gvc-worship/main/Worship.pdf"
+                    onLoadSuccess={onDocumentLoadSuccess}
+                >
+                    {Array.apply(null, Array(numPages)).map(
+                        (x, pageZeroIndex) => (
+                            <Page
+                                style={{ margin: 10 }}
+                                key={pageZeroIndex}
+                                pageNumber={pageZeroIndex + 1}
+                                renderTextLayer={false}
+                                renderAnnotationLayer={false}
+                                width={size.width}
+                            />
+                        )
+                    )}
+                </Document>
+            )}
         />
-    </Box>
-);
+    );
+};
