@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { pdfjs, Document, Page } from "react-pdf";
 import { SizeMe } from "react-sizeme";
+import "pdfjs-dist/build/pdf.worker.entry";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    "pdfjs-dist/build/pdf.worker.min.js",
+    import.meta.url
+).toString();
 
 export const Worship = () => {
     const [numPages, setNumPages] = useState();
