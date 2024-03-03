@@ -21,7 +21,7 @@ export const Worship = () => {
             refreshMode={"debounce"}
             render={({ size }) => (
                 <Document
-                    file="https://raw.githubusercontent.com/chanyoungs/gvc-worship/main/Worship.pdf"
+                    file="https://raw.githubusercontent.com/godsvsionchurch/worship/main/Worship.pdf"
                     onLoadSuccess={onDocumentLoadSuccess}
                 >
                     {Array.apply(null, Array(numPages)).map(
