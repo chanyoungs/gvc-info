@@ -16,9 +16,6 @@ jobs:
           with:
                 node-version: '14'
         
-        - run: git config --global user.email "chanyoungs@gmail.com"
-        - run: git config --global user.name "chanyoungs"
-
         - name: NPM install
           run: npm install
         
